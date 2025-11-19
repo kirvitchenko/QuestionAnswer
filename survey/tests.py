@@ -19,9 +19,7 @@ def user(db):
 
 @pytest.fixture
 def question(db):
-    return Question.objects.create(
-        text="Сколько планет в солнечной системе?"
-    )
+    return Question.objects.create(text="Сколько планет в солнечной системе?")
 
 
 @pytest.fixture
@@ -29,8 +27,9 @@ def answer(db, question):
     return Answer.objects.create(
         question_id=question,
         user_id="550e8400-e29b-41d4-a716-446655440000",
-        text="Восемь"
+        text="Восемь",
     )
+
 
 @pytest.mark.django_db
 class TestQuestionView:

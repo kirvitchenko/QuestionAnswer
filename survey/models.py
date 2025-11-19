@@ -18,6 +18,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     """Модель ответа, содержит внешний ключ на вопрос, индентификатор пользователя, содержание ответа и дату создания"""
+
     question_id = models.ForeignKey(
         Question, on_delete=models.CASCADE, related_name="answers"
     )

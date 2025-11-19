@@ -10,10 +10,12 @@ from survey.serializers import QuestionSerializer, AnswerSerializer
 
 
 class QuestionView(ModelViewSet):
+    """API для получения, создания и удаления вопросов"""
+
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-    http_method_names = ["get", "post", "delete"]
 
+    http_method_names = ["get", "post", "delete"]
 
     @action(detail=True, methods=["post"], url_path="answers")
     def add_answer(self, request, pk=None):
@@ -27,6 +29,8 @@ class QuestionView(ModelViewSet):
 
 
 class AnswersView(mixins.DestroyModelMixin, mixins.RetrieveModelMixin, GenericViewSet):
+    """API для получения и удаления ответов"""
+
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
 
